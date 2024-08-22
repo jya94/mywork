@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: pod
+metadata:
+  name: test2
+spec:
+  containers:
+    - name: mysql
+      image: mysql:8.0-debian
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: admin123
+        - name: MYSQL_DATABASE
+          value: emp
+        - name: MYSQL_USER
+          value: admin
+        - name: MYSQL_PASSWORD
+          value: admin123
+      resources:
+        requests:
+          cpu: 0.5
+          memory: 100m
+        limits: 
+          cpu: 1.0
+          memory: 200m
+      ports:
+        - name: containerport
+          containerport: "3306"
+          protocol: tcp
+
+          
