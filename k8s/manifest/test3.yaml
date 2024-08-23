@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: replication
+spec:
+  minReadySeconds: 10
+  replicas: 3
+  selector:
+    component: nginx
+  template:
+    metadata:
+      apiVersion: meta/v1
+      kind: ObjectMeta
+      labels:
+        env: dev
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1000m
+          
